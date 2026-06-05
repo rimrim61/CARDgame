@@ -1,4 +1,4 @@
-import { saveLevelCompletion } from "./scripts/firebase-ready.js";
+import { saveGameCompletion } from "./scripts/firebase-ready.js";
 
 const cardPool = [
   { emoji: "🐶", name: "강아지", color: "#ff8fa3" },
@@ -267,6 +267,7 @@ function checkMatch() {
 
 async function checkLevelClear() {
   const level = levels[currentLevelIndex];
+  const isFinalLevel = currentLevelIndex === levels.length - 1;
 
   if (matchedPairs !== level.pairs) return;
 
@@ -276,13 +277,13 @@ async function checkLevelClear() {
   localStorage.setItem("clearedLevels", JSON.stringify([...clearedLevels]));
   updateLevelTabs();
 
-  await saveLevelCompletion({
-    level: level.level,
-    cards: level.pairs * 2,
-    moves,
-    seconds: elapsedSeconds,
-    completedAt: new Date().toISOString(),
-  });
+  if (isFinalLevel) {
+    await saveGameCompletion({
+      m: moves,
+      s: elapsedSeconds,
+      t: Date.now(),
+    });
+  }
 
   openSuccessModal();
 }

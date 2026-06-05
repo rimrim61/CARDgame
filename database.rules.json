@@ -2,25 +2,19 @@
   "rules": {
     ".read": false,
     ".write": false,
-    "memoryGameScores": {
-      "$scoreId": {
+    "c": {
+      "$id": {
         ".read": false,
         ".write": "!data.exists()",
-        ".validate": "newData.hasChildren(['level', 'cards', 'moves', 'seconds', 'completedAt'])",
-        "level": {
-          ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 10 && newData.val() % 1 == 0"
-        },
-        "cards": {
-          ".validate": "newData.isNumber() && newData.val() >= 6 && newData.val() <= 36 && newData.val() % 1 == 0"
-        },
-        "moves": {
+        ".validate": "newData.hasChildren(['m', 's', 't'])",
+        "m": {
           ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 999 && newData.val() % 1 == 0"
         },
-        "seconds": {
+        "s": {
           ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 150 && newData.val() % 1 == 0"
         },
-        "completedAt": {
-          ".validate": "newData.isString() && newData.val().length <= 40"
+        "t": {
+          ".validate": "newData.isNumber() && newData.val() >= 1700000000000 && newData.val() <= 1999999999999 && newData.val() % 1 == 0"
         },
         "$other": {
           ".validate": false

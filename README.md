@@ -20,6 +20,8 @@ python -m http.server 4173
 
 점수 저장을 사용하려면 `firebase-config.example.js`를 `firebase-config.js`로 복사하고 Firebase 프로젝트 설정값을 채워주세요.
 
-Realtime Database에 `memoryGameScores` 경로로 단계, 카드 수, 시도 횟수, 완료 시간이 저장됩니다.
+Firebase 용량을 최소화하기 위해 SDK를 다운로드하지 않고 Realtime Database REST 요청만 사용합니다. 10단계를 모두 성공했을 때 하루에 한 번만 `c` 경로에 작은 기록이 저장됩니다.
+
+저장 필드는 `m`(시도 횟수), `s`(완료 초), `t`(저장 시각)뿐입니다.
 
 Firebase 콘솔의 Realtime Database 규칙 화면에는 `database.rules.json` 내용을 그대로 붙여 넣으면 됩니다.
