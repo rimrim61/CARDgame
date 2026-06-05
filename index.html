@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="동물, 식물, 사물 카드로 즐기는 10단계 기억력 카드 뒤집기 게임"
+    />
+    <title>반짝 기억 카드</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="top-panel" aria-labelledby="gameTitle">
+        <div class="title-block">
+          <p class="kicker">Memory Flip Game</p>
+          <h1 id="gameTitle">반짝 기억 카드</h1>
+        </div>
+
+        <div class="stats-bar" aria-label="게임 상태">
+          <div class="stat">
+            <span>단계</span>
+            <strong id="levelLabel">1 / 10</strong>
+          </div>
+          <div class="stat">
+            <span>카드</span>
+            <strong id="cardCountLabel">6장</strong>
+          </div>
+          <div class="stat">
+            <span>시도</span>
+            <strong id="moveLabel">0</strong>
+          </div>
+          <div class="stat">
+            <span>남은 시간</span>
+            <strong id="timeLabel">00:00</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="control-panel" aria-label="단계 선택">
+        <div class="level-tabs" id="levelTabs"></div>
+        <div class="control-actions">
+          <button class="icon-button" id="shuffleButton" type="button" aria-label="다시 섞기">
+            ↻
+          </button>
+          <button class="primary-button" id="restartButton" type="button">다시 시작</button>
+        </div>
+      </section>
+
+      <section class="board-wrap" aria-label="카드 보드">
+        <div class="board" id="board"></div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" id="resultModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-card">
+        <div class="modal-badge" id="modalBadge">★</div>
+        <h2 id="modalTitle">성공!</h2>
+        <p id="modalMessage">다음 단계로 가볼까요?</p>
+        <div class="modal-actions">
+          <button class="primary-button" id="nextButton" type="button">다음 단계</button>
+          <button class="secondary-button" id="closeModalButton" type="button">닫기</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
